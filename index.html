@@ -1,1 +1,142 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Social Media Analytics</title><link rel="stylesheet" href="styles.css"></head><body><header><div><small>PERFORMANCE OVERVIEW</small><h1>Social Analytics</h1></div><select id="period"><option value="30">Last 30 days</option><option value="7">Last 7 days</option><option value="90">Last 90 days</option></select></header><main><section class="cards"><article><span>Total reach</span><b id="reach">248K</b><em>↑ 18.4%</em></article><article><span>Engagement</span><b id="eng">16.9K</b><em>↑ 11.2%</em></article><article><span>Followers</span><b id="followers">42.6K</b><em>↑ 2.8%</em></article><article><span>Video views</span><b id="views">611K</b><em>↑ 24.1%</em></article></section><section class="layout"><article class="chart"><div class="title"><h2>Reach trend</h2><span>Organic + paid</span></div><div id="bars"></div></article><article class="platforms"><h2>Platforms</h2><div><span>Instagram</span><b>48%</b></div><progress value="48" max="100"></progress><div><span>TikTok</span><b>31%</b></div><progress value="31" max="100"></progress><div><span>YouTube</span><b>21%</b></div><progress value="21" max="100"></progress></article></section></main><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Responsive social media analytics dashboard demo built with HTML, CSS and JavaScript.">
+  <title>PulseBoard — Social Media Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="logo">P</span><span>PULSEBOARD</span></div>
+      <nav>
+        <button class="nav active" data-view="overview">Overview</button>
+        <button class="nav" data-view="content">Top content</button>
+        <button class="nav" data-view="campaigns">Campaigns</button>
+        <button class="nav" data-view="audience">Audience</button>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="themeToggle" class="nav">Dark mode</button>
+        <a href="https://paolobarranca.com" target="_blank" rel="noreferrer">
+          <span class="avatar">PB</span>
+          <span><strong>Paolo Barranca</strong><small>Creative Producer</small></span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="menuButton" class="menu">☰</button>
+        <div>
+          <small>PERFORMANCE INTELLIGENCE</small>
+          <h1 id="pageTitle">Social Analytics</h1>
+        </div>
+        <div class="top-controls">
+          <select id="platformFilter">
+            <option value="all">All platforms</option>
+            <option value="instagram">Instagram</option>
+            <option value="tiktok">TikTok</option>
+            <option value="youtube">YouTube</option>
+          </select>
+          <select id="periodFilter">
+            <option value="30">Last 30 days</option>
+            <option value="7">Last 7 days</option>
+            <option value="90">Last 90 days</option>
+          </select>
+        </div>
+      </header>
+
+      <section class="view active-view" id="overview">
+        <section class="kpi-grid">
+          <article class="kpi"><span>Total reach</span><b id="reach">248K</b><em>+18.4%</em></article>
+          <article class="kpi"><span>Engagement</span><b id="engagement">16.9K</b><em>+11.2%</em></article>
+          <article class="kpi"><span>Followers</span><b id="followers">42.6K</b><em>+2.8%</em></article>
+          <article class="kpi"><span>Video views</span><b id="views">611K</b><em>+24.1%</em></article>
+        </section>
+
+        <section class="grid">
+          <article class="panel wide">
+            <div class="panel-head">
+              <div><small>REACH TREND</small><h2>Performance over time</h2></div>
+              <span class="badge">Organic + paid</span>
+            </div>
+            <div class="chart" id="reachChart"></div>
+            <div class="chart-labels"><span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>W7</span><span>W8</span></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head"><div><small>PLATFORM SHARE</small><h2>Reach distribution</h2></div></div>
+            <div class="donut-wrap">
+              <div class="donut" id="donut"><span>248K<small>Total reach</small></span></div>
+              <div class="legend">
+                <div><i class="ig"></i><span>Instagram</span><b>48%</b></div>
+                <div><i class="tt"></i><span>TikTok</span><b>31%</b></div>
+                <div><i class="yt"></i><span>YouTube</span><b>21%</b></div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="grid lower">
+          <article class="panel">
+            <div class="panel-head"><div><small>CONTENT HEALTH</small><h2>Key rates</h2></div></div>
+            <div class="metric-row"><span>Engagement rate</span><b>6.8%</b></div>
+            <div class="progress"><span style="width:68%"></span></div>
+            <div class="metric-row"><span>Average watch rate</span><b>72%</b></div>
+            <div class="progress"><span style="width:72%"></span></div>
+            <div class="metric-row"><span>Click-through rate</span><b>4.7%</b></div>
+            <div class="progress"><span style="width:47%"></span></div>
+          </article>
+
+          <article class="panel wide">
+            <div class="panel-head"><div><small>RECENT POSTS</small><h2>Best-performing content</h2></div><button class="text-button" data-view-link="content">View all</button></div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Post</th><th>Platform</th><th>Reach</th><th>Engagement</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>3-second hook framework</td><td>Instagram</td><td>48.2K</td><td>8.9%</td><td><span class="status strong">Strong</span></td></tr>
+                  <tr><td>AI workflow transformation</td><td>TikTok</td><td>36.7K</td><td>7.6%</td><td><span class="status strong">Strong</span></td></tr>
+                  <tr><td>Creative strategy breakdown</td><td>LinkedIn</td><td>12.8K</td><td>5.2%</td><td><span class="status steady">Steady</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </section>
+
+      <section class="view" id="content">
+        <div class="section-heading"><div><small>CONTENT PERFORMANCE</small><h2>Top content</h2><p>Compare the strongest-performing creative formats.</p></div></div>
+        <div class="content-grid">
+          <article class="content-card"><span class="platform-tag ig-tag">Instagram</span><h3>Hook Framework Carousel</h3><p>Educational carousel focused on retention and scroll-stopping intros.</p><div class="content-stats"><span><b>48.2K</b><small>Reach</small></span><span><b>8.9%</b><small>Engagement</small></span></div></article>
+          <article class="content-card"><span class="platform-tag tt-tag">TikTok</span><h3>Workflow Transformation</h3><p>Fast-paced before-and-after edit showing the creative process.</p><div class="content-stats"><span><b>36.7K</b><small>Reach</small></span><span><b>7.6%</b><small>Engagement</small></span></div></article>
+          <article class="content-card"><span class="platform-tag yt-tag">YouTube</span><h3>AI Creative Case Study</h3><p>Short-form project breakdown with strategy, execution and outcome.</p><div class="content-stats"><span><b>28.4K</b><small>Views</small></span><span><b>71%</b><small>Watch rate</small></span></div></article>
+        </div>
+      </section>
+
+      <section class="view" id="campaigns">
+        <div class="section-heading"><div><small>CAMPAIGN ANALYSIS</small><h2>Campaign performance</h2><p>Track reach, spend efficiency and creative momentum.</p></div></div>
+        <div class="campaign-grid">
+          <article class="campaign"><header><span class="badge">Active</span><b>82/100</b></header><h3>AI Creative Services</h3><p>Lead-generation campaign for agencies and startup founders.</p><div class="campaign-kpis"><span><b>94K</b><small>Reach</small></span><span><b>5.9%</b><small>CTR</small></span><span><b>£8.40</b><small>CPA</small></span></div></article>
+          <article class="campaign"><header><span class="badge orange">Testing</span><b>74/100</b></header><h3>Creator Workflow Series</h3><p>Educational short-form campaign across Instagram and TikTok.</p><div class="campaign-kpis"><span><b>73K</b><small>Reach</small></span><span><b>4.8%</b><small>CTR</small></span><span><b>£11.20</b><small>CPA</small></span></div></article>
+          <article class="campaign"><header><span class="badge purple">Review</span><b>91/100</b></header><h3>Portfolio Case Studies</h3><p>Project-led campaign highlighting creative strategy and results.</p><div class="campaign-kpis"><span><b>61K</b><small>Reach</small></span><span><b>6.4%</b><small>CTR</small></span><span><b>£7.90</b><small>CPA</small></span></div></article>
+        </div>
+      </section>
+
+      <section class="view" id="audience">
+        <div class="section-heading"><div><small>AUDIENCE INSIGHTS</small><h2>Audience profile</h2><p>Sample demographic and behavioural insights for portfolio demonstration.</p></div></div>
+        <section class="grid">
+          <article class="panel"><div class="panel-head"><div><small>AGE GROUPS</small><h2>Audience age</h2></div></div><div id="ageChart" class="horizontal-chart"></div></article>
+          <article class="panel"><div class="panel-head"><div><small>TOP LOCATIONS</small><h2>Audience geography</h2></div></div><div class="location-list"><div><span>United Kingdom</span><b>38%</b></div><div><span>United States</span><b>22%</b></div><div><span>Italy</span><b>14%</b></div><div><span>Germany</span><b>9%</b></div></div></article>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
