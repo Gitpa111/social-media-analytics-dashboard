@@ -1,2 +1,6 @@
-# social-media-analytics-dashboard
-Responsive analytics dashboard displaying reach, engagement, audience growth and campaign performance.
+# Social Media Analytics Dashboard
+
+A responsive analytics interface using sample performance data, KPI cards and interactive period filters.
+
+## Stack
+HTML, CSS and JavaScript.

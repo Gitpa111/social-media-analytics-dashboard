@@ -1,0 +1,1 @@
+const sets={7:[35,48,42,68,55,81,74],30:[42,60,51,73,66,88,79,94,72,85,91,76],90:[28,38,46,50,57,61,69,74,81,88,92,97]};function render(v){const bars=document.querySelector('#bars');bars.innerHTML=sets[v].map(n=>`<div class="bar" style="height:${n}%" data-value="${n}K"></div>`).join('');}render('30');document.querySelector('#period').onchange=e=>render(e.target.value);
